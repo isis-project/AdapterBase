@@ -1,0 +1,22 @@
+PREFIX = $(MY_PREFIX)
+PROFILE = $(MY_PROFILE)
+BUILD_TYPE ?= debug
+PLATFORM   := x86
+
+LUNA_STAGING ?= $(HOME)/luna-desktop-binaries/staging
+STAGING_INC_DIR := $(LUNA_STAGING)/include
+STAGING_LIB_DIR := $(LUNA_STAGING)/lib
+
+
+INCLUDES := -I$(LUNA_STAGING)/include
+LIBS := 
+
+include Makefile.inc
+
+install: all
+	install -m 0755 $(TARGET_SO) $(STAGING_LIB_DIR)
+	install -m 0755 *.h          $(STAGING_INC_DIR)
+
+clean::
+	rm -f $(STAGING_LIB_DIR)/AdapterBase.o
+	rm -f $(STAGING_INC_DIR)/AdapterBase.h
