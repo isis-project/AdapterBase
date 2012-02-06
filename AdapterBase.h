@@ -173,7 +173,7 @@ extern "C"
     // and function pointers of the methods to expose.  Should return the number
     // of methods to expose, or 0 if none.  The given functions will be called when
     // JavaScript code invokes the named methods on the adapter object in the HTML DOM.
-    uint32_tAdapterGetMethods(const char*** outNames, const JSMethodPtr **outMethods, NPIdentifier **outIDs);
+    uint32_t AdapterGetMethods(const char*** outNames, const JSMethodPtr **outMethods, NPIdentifier **outIDs);
 
 }
 
@@ -273,11 +273,11 @@ public:
     void ThrowException( const char* msg );
 
 protected:
-    NPWindowmWindow;
-    NpPalmWindowmPalmWindow;
+    NPWindow mWindow;
+    NpPalmWindow mPalmWindow;
 
-    GMainLoop*mMainLoop;
-    NPPmInstance;
+    GMainLoop* mMainLoop;
+    NPP mInstance;
 
     /* This method is called immediately before the call to AdapterGetMethods
      * if it returns true, AdapterGetMethods is not called at all, and this
@@ -407,12 +407,12 @@ private:
     NPObject*mDOMObject; // Adapter's object in the page's DOM tree, to allow us to make calls back into JavaScript.
 
 
-    static NPClasssPluginClass;// Defines implementation methods for mNPObject.
+    static NPClass sPluginClass;// Defines implementation methods for mNPObject.
 
     // Info on the methods we expose to JavaScript side via mNPObject.
-    NPIdentifier*mJSIdentifiers;
-    const JSMethodPtr*mJSMethods;
-    uint32_tmJSMethodCount;
+    NPIdentifier* mJSIdentifiers;
+    const JSMethodPtr* mJSMethods;
+    uint32_t mJSMethodCount;
     bool                mCacheAdapter; ///< If true this adapter will be cached by WebKit.
     bool                mUseGraphicsContext; ///< If true WebKit will send a PGContext* but no buffer to write into
 
