@@ -44,12 +44,12 @@ LICENSE@@@ */
 
 
 /*
-A luna adapter is basically a browser plugin loaded by luna that renders content
-from a server running in another process.  For example, the luna Browser app uses an adapter
-to display web pages rendered by BrowserServer, so that the luna process itself does not need to be
+A webOS adapter is basically a browser plugin loaded by webOS that renders content
+from a server running in another process.  For example, the webOS Browser app uses an adapter
+to display web pages rendered by BrowserServer, so that the webOS process itself does not need to be
 responsible for rendering unknown/untested content from the web.
 
-Writing a Luna adapter consists of two simple steps:
+Writing a webOS adapter consists of two simple steps:
 1: Implement the required C hooks.
 2: Implement a subclass of AdapterBase, defined below.
 
@@ -57,7 +57,7 @@ Writing a Luna adapter consists of two simple steps:
 #1: Implement the required C hooks
 ----------------------------------
 AdapterBase.cpp includes implementations for all of the standard C entrypoints required by the NPAPI (Netscape Plugin API).
-There are only a few C entrypoints that luna adapter authors need to provide:
+There are only a few C entrypoints that webOS adapter authors need to provide:
 
 
 NPError AdapterLibInitialize(void);
@@ -114,12 +114,7 @@ A Few Notes
 Most of the NPN_* APIs (which adapter plugins use to call back into webkit to perform various operations)
 are not available here.  More can be be added if necessary.
 
-Similarly, many of the NPP_* APIs are neither implemented nor exposed by AdapterBase.  If this causes
-problems for your adapter, then let Jesse know.  At the very least, it's a simple matter to pass the
-calls through to the subclass implementation so adapter authors at least have the option of implementing
-them.  However, we don't expect that they will generally be needed.
-
-Questions, suggestions, feature requests, rants, etc., can be sent to Jesse Donaldson.
+Similarly, many of the NPP_* APIs are neither implemented nor exposed by AdapterBase.
 
 
 Further Reference:
@@ -184,7 +179,7 @@ extern "C"
 
 /**
  * Handles many of the basic mechanics of the NPAPI required to get an
- * adapter working in luna, and provides a simpler interface to adapter authors.
+ * adapter working in webOS, and provides a simpler interface to adapter authors.
  */
 class AdapterBase {
 
@@ -194,7 +189,7 @@ public:
 
 
     /*
-    NPN API shims: These allow the adapter implementation to call back into the luna WebKit.
+    NPN API shims: These allow the adapter implementation to call back into the webOS WebKit.
     More will be added as requested.
     */
 
