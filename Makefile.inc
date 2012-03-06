@@ -1,4 +1,4 @@
-OBJDIR := $(BUILD_TYPE)-$(PLATFORM)
+OBJDIR := $(LUNA_STAGING)/$(BUILD_TYPE)-$(PLATFORM)
 
 # ------------------------------------------------------------------
 
