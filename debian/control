@@ -1,0 +1,17 @@
+Source: adapterbase
+Section: webOS
+Priority: extra
+Maintainer: Anupam <anupam.kaul@palm.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: https://github.com/isis-project/AdapterBase
+#Vcs-Git: git://git.debian.org/collab-maint/adapterbase.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/adapterbase.git;a=summary
+
+Package: adapterbase
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Base class for ISIS browser plugin
+ A base class for a browser plugin loaded by webOS that renders content from a
+ server running in another process. ISIS browser app uses an adapter to display
+ web pages rendered by BrowserServer.

@@ -1,0 +1,12 @@
+Package: adapterbase
+Version: 1.0.0-1
+Architecture: amd64
+Maintainer: Anupam <anupam.kaul@palm.com>
+Installed-Size: 40
+Section: webOS
+Priority: extra
+Homepage: https://github.com/isis-project/AdapterBase
+Description: Base class for ISIS browser plugin
+ A base class for a browser plugin loaded by webOS that renders content from a
+ server running in another process. ISIS browser app uses an adapter to display
+ web pages rendered by BrowserServer.
