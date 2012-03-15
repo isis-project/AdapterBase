@@ -6,8 +6,28 @@
 # dh-make output file, you may use that output file without restriction.
 # This special exception was added by Craig Small in version 0.37 of dh-make.
 
+# Uncomment this to turn on verbose mode
+export DH_VERBOSE=1
+
+#export APPDIR := /usr/lib
+#export STAGING_DIR := /usr/share
+#export PN := adapterbase
+
 # Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
 
 %:
 	dh $@ 
+
+.PHONY: override_dh_auto_build override_dh_auto_test override_dh_install
+
+override_dh_auto_build:
+
+override_dh_auto_test:
+
+override_dh_auto_clean:
+
+override_dh_install:
+
+#override_dh_clean:
+

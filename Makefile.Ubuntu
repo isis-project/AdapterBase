@@ -2,8 +2,8 @@ PREFIX = $(MY_PREFIX)
 PROFILE = $(MY_PROFILE)
 BUILD_TYPE ?= debug
 PLATFORM   := x86
+PACKAGE_NAME := adapterbase
 
-#LUNA_STAGING ?= $(HOME)/luna-desktop-binaries/staging
 LUNA_STAGING = $(HOME)/ISIS_OUT
 STAGING_INC_DIR := $(LUNA_STAGING)/include
 STAGING_LIB_DIR := $(LUNA_STAGING)/lib
@@ -15,8 +15,11 @@ LIBS :=
 include Makefile.inc
 
 install: all
-	install -m 0755 $(TARGET_SO) $(STAGING_LIB_DIR)
-	install -m 0755 *.h          $(STAGING_INC_DIR)
+	mkdir -p ./debian/adapterbase/usr/lib
+	cp $(LUNA_STAGING)/$(PACKAGE_NAME)/*.a ./debian/adapterbase/usr/lib/
+
+deb: 
+	dpkg-buildpackage -rfakeroot 
 
 clean::
 	rm -f $(STAGING_LIB_DIR)/AdapterBase.o
