@@ -10,3 +10,15 @@ unix {
 CONFIG += link_pkgconfig
 PKGCONFIG += glib-2.0
 }
+
+#install headers
+headers.path = $${INCLUDEPATH}
+headers.files += \
+    AdapterBase.h
+
+INSTALLS += headers
+
+#install lib
+target.path = $$(LUNA_STAGING)/lib
+INSTALLS += target
+
