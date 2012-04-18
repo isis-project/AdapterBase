@@ -8,6 +8,7 @@
 
 # Uncomment this to turn on verbose mode
 export DH_VERBOSE=1
+export DEB_STAGING_LIBDIR=debian/adapterbase/usr/lib
 
 #export APPDIR := /usr/lib
 #export STAGING_DIR := /usr/share
@@ -28,6 +29,11 @@ override_dh_auto_test:
 override_dh_auto_clean:
 
 override_dh_install:
+
+override_dh_installdirs:
+	install -d debian/adapterbase
+	mkdir -p $(DEB_STAGING_LIBDIR)
+	install -m 444 libAdapterBase.a $(DEB_STAGING_LIBDIR)
 
 #override_dh_clean:
 

@@ -23,3 +23,8 @@ INSTALLS += headers
 target.path = $$(LUNA_STAGING)/lib
 INSTALLS += target
 
+debtarget.target = deb
+debtarget.commands = dpkg-buildpackage -rfakeroot
+
+QMAKE_EXTRA_TARGETS += debtarget
+
